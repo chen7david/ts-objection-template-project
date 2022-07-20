@@ -1,0 +1,1 @@
+# ts-objection-template-project
