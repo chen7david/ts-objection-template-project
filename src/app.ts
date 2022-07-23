@@ -1,10 +1,15 @@
-import User from './models/user.model'
-import UserService from './services/users.services'
+import Koa from 'koa'
+import cors from 'kcors'
+import bodyparser from 'koa-body'
+import dotenv from 'dotenv'
+import UserRouter from './routes/user.router'
+dotenv.config({ path: '../.env' })
+const app = new Koa()
+const port = process.env.APP_PORT || 3000
+const host = process.env.APP_PORT || 'http://localhost'
 
-// User.query()
-UserService.findOne(2)
-// .insert({
-//     username: 'someuser',
-//     password: 'password'
-// })
-.then(e => console.log(e)).catch(err => console.log(err))
+app.use(UserRouter.routes())
+app.use(cors())
+app.use(bodyparser())
+
+app.listen(port, () => console.log('running at: %s:%s', host, port))
