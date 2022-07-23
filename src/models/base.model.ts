@@ -1,12 +1,8 @@
-import { Model } from 'objection'
+import { Model, QueryBuilderType, ModelClass } from 'objection'
 import knex from 'knex'
 import knexfile from '../database/knexfile'
 import pluralize from 'pluralize'
 Model.knex(knex(knexfile.development))
-
-interface IModel {
-    
-}
 
 class BaseModel extends Model {
 
@@ -20,5 +16,6 @@ class BaseModel extends Model {
 }
 
 export default BaseModel
+
 
 
