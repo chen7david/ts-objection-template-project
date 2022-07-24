@@ -5,9 +5,8 @@ const BCRYPT_ROUNDS = 12
 
 class User extends Model {
     username: string;
-    email: string;
     password: string;
-    is_active: boolean;
+    is_active?: boolean;
 
     async $beforeInsert(context: QueryContext): Promise<void> {
         await super.$beforeInsert(context)
