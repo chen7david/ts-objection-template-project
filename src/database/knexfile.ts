@@ -1,8 +1,6 @@
 import type { Knex } from "knex";
 import { join } from 'path'
 import config from '../config'
-// import dotenv from 'dotenv'
-// dotenv.config({ path: '../../.env' })
 
 const dbConfig: { [key: string]: Knex.Config } = {
   development: {

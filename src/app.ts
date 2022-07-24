@@ -9,7 +9,6 @@ const app = new Koa()
 const port = config.server.port
 const host = url.format(config.server)
 
-console.log(config)
 app.use(router())
 app.use(cors())
 app.use(bodyparser())

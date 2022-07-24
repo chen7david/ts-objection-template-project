@@ -1,6 +1,6 @@
 export interface IToken {
-    secret: string | undefined;
-    ttl: string | undefined;
+    secret: string;
+    ttl: string;
 }
 
 export interface IJWT {
@@ -37,7 +37,7 @@ export interface IUpload {
 
 export interface IConfig {
     server: IServer;
-    jwt?: IJWT;
+    jwt: IJWT;
     bodyparser?: IBodyParser;
     upload?: IUpload;
     db: IDB;

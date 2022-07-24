@@ -13,12 +13,12 @@ const config: IGlobalConfig = {
         },
         jwt: {
             access: {
-                secret: process.env.ACC_TOKEN_SECRET,
-                ttl: process.env.ACC_TOKEN_TTL
+                secret: process.env.ACC_TOKEN_SECRET || '',
+                ttl: process.env.ACC_TOKEN_TTL  || ''
             },
             refresh: {
-                secret: process.env.REF_TOKEN_SECRET,
-                ttl: process.env.REF_TOKEN_TTL
+                secret: process.env.REF_TOKEN_SECRET  || '',
+                ttl: process.env.REF_TOKEN_TTL  || ''
             },
         },
         db: {
@@ -35,6 +35,16 @@ const config: IGlobalConfig = {
             port: process.env.APP_PORT || '3000',
             hostname: process.env.APP_HOST || 'localhost',
             protocol: process.env.APP_PROTOCOL || 'http'
+        },
+        jwt: {
+            access: {
+                secret: process.env.ACC_TOKEN_SECRET || '',
+                ttl: process.env.ACC_TOKEN_TTL  || ''
+            },
+            refresh: {
+                secret: process.env.REF_TOKEN_SECRET  || '',
+                ttl: process.env.REF_TOKEN_TTL  || ''
+            },
         },
         db: {
             client: process.env.DB_USER || 'postgres',
