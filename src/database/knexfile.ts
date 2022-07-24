@@ -1,12 +1,14 @@
 import type { Knex } from "knex";
-import dotenv from 'dotenv'
-dotenv.config({ path: '../../.env' })
+import { join } from 'path'
+import config from '../config'
+// import dotenv from 'dotenv'
+// dotenv.config({ path: '../../.env' })
 
-const config: { [key: string]: Knex.Config } = {
+const dbConfig: { [key: string]: Knex.Config } = {
   development: {
     client: "sqlite3",
     connection: {
-      filename: __dirname + "/dev.sqlite3"
+      filename: join(__dirname, "/dev.sqlite3")
     },
     useNullAsDefault: true
   },
@@ -14,13 +16,13 @@ const config: { [key: string]: Knex.Config } = {
   staging: {
     client: "postgresql",
     connection: {
-      database: process.env.DB_NAME,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASS
+      database: config.db.database,
+      user: config.db.username,
+      password: config.db.password,
     },
     pool: {
-      min: 2,
-      max: 10
+      min: config.db.poolMin || 2,
+      max: config.db.poolMax || 10
     },
     migrations: {
       tableName: "knex_migrations"
@@ -30,13 +32,13 @@ const config: { [key: string]: Knex.Config } = {
   production: {
     client: "postgresql",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password"
+      database: config.db.database,
+      user: config.db.username,
+      password: config.db.password,
     },
     pool: {
-      min: 2,
-      max: 10
+      min: config.db.poolMin || 2,
+      max: config.db.poolMax || 10
     },
     migrations: {
       tableName: "knex_migrations"
@@ -44,4 +46,4 @@ const config: { [key: string]: Knex.Config } = {
   }
 };
 
-export default config
+export default dbConfig
