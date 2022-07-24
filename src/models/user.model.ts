@@ -5,6 +5,7 @@ const BCRYPT_ROUNDS = 12
 
 class User extends Model {
     username: string;
+    email: string;
     password: string;
     is_active: boolean;
 
