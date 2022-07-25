@@ -6,11 +6,17 @@ const router = new Router()
 
 router
     .param('id', UserController.loadOne)
-    .get('/users', requireAuth, UserController.find)
+    /* PUBLIC ROUTES */
     .post('/register', validate(createUser), UserController.create)
+    /* AUTHENTICATED ROUTES */
+    // .use(requireAuth)
+    .get('/users', UserController.find)
     .post('/users', validate(createUser), UserController.create)
     .get('/users/:id', UserController.findOne)
     .patch('/users/:id', UserController.update)
     .delete('/users/:id', UserController.remove)
+    .get('/users/:id/roles', UserController.findRoles)
+    .post('/users/:id/roles', UserController.addRole)
+    .delete('/users/:id/roles', UserController.removeRole)
 
 export default router

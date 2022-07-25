@@ -1,4 +1,5 @@
 import Model from './base.model'
+import Role from './role.model'
 import { QueryContext, ModelOptions } from 'objection'
 import bcrypt from 'bcrypt'
 const BCRYPT_ROUNDS = 12
@@ -22,7 +23,26 @@ class User extends Model {
     }
 
     async verifyPassword(password: string): Promise<boolean> {
-        return await bcrypt.compare(password, this.password)
+        return bcrypt.compare(password, this.password)
+    }
+
+    static get relationMappings() {
+
+        return {
+
+            roles: {
+                relation: Model.ManyToManyRelation,
+                modelClass: Role,
+                join: {
+                    from: 'users.id',
+                    to: 'roles.id',
+                    through: {
+                        from: 'user_roles.user_id',
+                        to: 'user_roles.role_id',
+                    }
+                }
+            },
+        }
     }
 }
 
