@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt'
 const BCRYPT_ROUNDS = 12
 
 class User extends Model {
+    id!: number;
     username: string;
     password: string;
     is_active?: boolean;

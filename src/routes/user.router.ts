@@ -7,6 +7,7 @@ const router = new Router()
 router
     .param('id', UserController.loadOne)
     .get('/users', requireAuth, UserController.find)
+    .post('/register', validate(createUser), UserController.create)
     .post('/users', validate(createUser), UserController.create)
     .get('/users/:id', UserController.findOne)
     .patch('/users/:id', UserController.update)
