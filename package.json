@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' ./src/app.ts",
+    "build": "tsc",
     "knex": "./node_modules/.bin/knex --knexfile src/database/knexfile.ts"
   },
   "repository": {
