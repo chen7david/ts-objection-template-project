@@ -24,11 +24,13 @@ export const validate = (schema: v.ObjectSchema) => async function (ctx: Context
     }
 }
 
-const schemas: { [key: string]: any } = {
-    createUser,
-    loginUser
-}
+/* Factory Middleware Export */
 
-Object.keys(schemas).map((key) => schemas[key] = validate(schemas[key]))
+// const schemas: { [key: string]: any } = {
+//     createUser,
+//     loginUser
+// }
 
-export default schemas
+// Object.keys(schemas).map((key) => schemas[key] = validate(schemas[key]))
+
+// export default schemas
